@@ -4,7 +4,7 @@
 
 Aims:
 -----
-A javascript gesture recognition library for iPad and iPhone.  Apple's touch event and gesture objects go some way to providing an API for touch-based interfaces in JS but doesn't really provide enough tracking info.  They also don't provide easy gesture recognition (i.e. no onpinch event).  I'd like to bridge the gap between Apple's touch events and full-on gesture recognition.
+I'm learning a bit about touch events in HTML and JavaScript on the iPhone.  Seems to me that Apple's touch event and gesture objects go some way to providing an API for touch-based interfaces in JS but doesn't really provide enough tracking info (speed and acceleration being key to the native interfaces Apple themselves build).  They also don't provide easy gesture recognition (i.e. no onpinch or similar).  I'd like to bridge the gap between Apple's touch events and easy-to-use gesture recognition.
 
 Syntax should be as simple as something like:
 
@@ -13,3 +13,5 @@ watched.swipe(handler);  // attach a handler to the elements swipe event
 watched.unbind("swipe", handler);  // unbind the handler from the swipe event
 
 A basic example can be viewed in the index.html page.  Boot it up on an iphone and swipe the black square.
+
+This is very much a learning project.  Mistakes will be made and enjoyed whole-heartedly.
