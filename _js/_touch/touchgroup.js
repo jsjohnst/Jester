@@ -1,4 +1,4 @@
-Jest.fn.extend({
+Jester.fn.extend({
   // The TouchGroup class represents and maintains information about collections of touches
   TouchGroup : function(event) {
     var that = this;
@@ -13,7 +13,7 @@ Jest.fn.extend({
     var deltaScale = scale;
   
     for(var i = 0; i < numTouches; i++) {
-      this["touch" + i] = new Jest.fn.Touch(event.touches[i].pageX, event.touches[i].pageY);
+      this["touch" + i] = new Jester.fn.Touch(event.touches[i].pageX, event.touches[i].pageY);
       midpointX = event.touches[i].pageX;
       midpointY = event.touches[i].pageY;
     }

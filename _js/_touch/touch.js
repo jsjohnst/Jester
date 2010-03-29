@@ -1,4 +1,4 @@
-Jest.fn.extend({
+Jester.fn.extend({
   // The Touch class represents and maintains information about a single touch point on the screen.
   Touch : function(_startX, _startY) {
     var that = this;

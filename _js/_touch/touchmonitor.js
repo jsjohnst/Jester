@@ -1,6 +1,6 @@
 // TouchMonitor watches touches on an element, maintains state and triggers events
 
-Jest.fn.extend({
+Jester.fn.extend({
 
   TouchMonitor : function(_el, _events, _opts) {
 
@@ -50,7 +50,7 @@ Jest.fn.extend({
 
     element.addEventListener("touchstart", function(evt) {
       evt.preventDefault();
-      touches = new Jest.fn.TouchGroup(evt);
+      touches = new Jester.fn.TouchGroup(evt);
     }, opts.bubble);
 
     element.addEventListener("touchmove", function(evt) {

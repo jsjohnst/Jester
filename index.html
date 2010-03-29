@@ -17,7 +17,7 @@
       }
     </style>
 
-    <script src="_js/jest.js"></script>
+    <script src="_js/jester.js"></script>
     <script src="_js/_events/eventset.js"></script>
     <script src="_js/_events/eventsmodel.js"></script>
     <script src="_js/_touch/touch.js"></script>
@@ -31,7 +31,7 @@
           alert("Swipe in direction: " + direction);
         };
 
-        var tj = jest(document.getElementById("target"));
+        var tj = jester(document.getElementById("target"));
 
         tj.swipe(handler);
 

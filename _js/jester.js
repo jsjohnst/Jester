@@ -1,10 +1,10 @@
 // this is what you call to get a new jest object and start monitoring gestures
-var jest = function(element, options) {
-  return new Jest(element, options);
+var jester = function(element, options) {
+  return new Jester(element, options);
 }
 
 // the Jest constructor
-var Jest = function(_el, _opts) {
+var Jester = function(_el, _opts) {
 
   // if an element hasn't been passed in, throw an error
   if(!_el || typeof _el.nodeType === "undefined") {
@@ -34,13 +34,13 @@ var Jest = function(_el, _opts) {
 };
 
 // ez prototype extension
-Jest.fn = Jest.prototype;
+Jester.fn = Jester.prototype;
 
-Jest.fn.extend = function(obj) {
+Jester.fn.extend = function(obj) {
   for(property in obj) {
     // shallow copy properties
     if(obj.hasOwnProperty(property)) {
-      Jest.prototype[property] = obj[property];
+      Jester.prototype[property] = obj[property];
     }
   }
 };

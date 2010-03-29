@@ -1,4 +1,4 @@
-Jest.fn.extend({
+Jester.fn.extend({
   // event registration, deregistration and execution
   EventSet : function(_el) {
 

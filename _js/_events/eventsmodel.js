@@ -1,4 +1,4 @@
-Jest.fn.extend({
+Jester.fn.extend({
   tap : function(func) {
     this.bind("tap", func);
   },
