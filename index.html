@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title></title>
+
+    <link rel="stylesheet" href="_css/style.css" />
+
+    <style type="text/css">
+      #target {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        background-color: #000;
+      }
+    </style>
+
+    <script src="_js/jest.js"></script>
+    <script src="_js/_events/eventset.js"></script>
+    <script src="_js/_events/eventsmodel.js"></script>
+    <script src="_js/_touch/touch.js"></script>
+    <script src="_js/_touch/touchgroup.js"></script>
+    <script src="_js/_touch/touchmonitor.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+
+        var handler = function(touches, direction) {
+          alert("Swipe in direction: " + direction);
+        };
+
+        var tj = jest(document.getElementById("target"));
+
+        tj.swipe(handler);
+
+        document.getElementById("clearjest").addEventListener("click", function() {
+          tj.unbind("swipe", handler);
+        }, false);
+
+      }, false);
+    </script>
+
+  </head>
+
+  <body>
+
+    <div id="wrapper">
+      <div id="target"></div>
+      <a href="#" id="clearjest">Clear Jest Swipe</a>
+    </div>
+
+  </body>
+
+</html>
