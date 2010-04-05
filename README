@@ -2,18 +2,31 @@
 // Jester //
 ////////////
 
-Intro
------
-A small JavaScript library for gesture recognition on DOM elements.
+0.0 - Intro
+1.0 - Project Status
+1.1 - Project Aims
+1.2 - Project Todos
+2.0 - How To Use
+2.1 - Basic Syntax
+2.2 - Handlers
+2.3 - Options
+3.0 - Bugs? Questions?
 
-Project Status
---------------
-Jester works for Swipes, Flicks, Taps and Double Taps.
+
+0.0 Intro
+---------
+A small JavaScript library for easily recognising gestures on DOM elements on the iPhone and iPad.  Increased device support is a major todo.
+
+
+1.0 Project Status
+------------------
+Jester works for Swipes, Flicks, Taps and Double Taps.  Pinches should be added by the end of the week.
 
 Examples of code can be seen at the bottom of this README in the "How to Use" section.
 
-Project Aims
-------------
+
+1.1 Project Aims
+----------------
 - Super easy gesture recognition on DOM Elements.
 - Elegant syntax.  I like jQuery's style so will go with a bastardisation of that for now.
 - Library agnostic : must not rely on jQuery, Moo, Dojo etc.  Pure JavaScript only.
@@ -25,24 +38,41 @@ A basic example can be viewed in the index.html page.  Boot it up on an iPhone, 
 
 This is very much a learning project.  Mistakes will be made and enjoyed whole-heartedly.
 
-Project Todos
--------------
+
+1.2 Project Todos
+-----------------
 - Pinch recognition.
 - Non-Apple device support.
+- Clear and thorough documentation.
+- Project website.
 
-How to Use
-----------
 
-Basic Syntax
-------------
+2.0 How to Use
+--------------
+Jester makes recognising gestures on DOM elements really easy.  First you need to know how to get a DOM element, though.  To get an element by its ID, use:
 
+// will assign the element with an ID of "wrapper" to the variable el
+var el = document.getElementById("wrapper");
+
+If you're using jQuery or another library which wraps elements in a custom object/interface, you need to get to the DOM element directly.  In jQuery:
+
+// will assign the element with an ID of "wrapper" to the variable el
+var el = $("#wrapper").get(0);
+
+More examples with other libraries coming soon.
+
+OK, on with the Jester information....
+
+
+2.1 Basic Syntax
+----------------
 jester(element)
   .swipe(swipeHandler)  // attach a handler to the element's swipe event
   .doubletap(dtHandler);  // attach a handler to the element's doubletap event
 
-Handlers
---------
 
+2.2 Handlers
+------------
 var handler = function(touchGroup, direction) {
   // handler code
 }
@@ -65,9 +95,9 @@ jester(document.getElementById("wrapper"))
   .flick(whichDirection)
   .swipe(howFar);
 
-Options
--------
 
+2.3 Options
+-----------
 You can also pass Jester options which affect the way gestures are recognised:
 
 jester(document.getElementById("wrapper"), { swipeDistance: 400, flickTime: 200 })
@@ -87,3 +117,8 @@ swipeDistance  Integer   The minimum distance a gesture must travel before a swi
 
 flickTime      Integer   The maximum length of time a gesture can last for it to be registered as a flick.
 flickDistance  Integer   The minimum distance a gesture must travel for it to be registered as a flick.
+
+
+3.0 Bugs? Questions?
+--------------------
+Jester is currently the work of me, Scott Seaward.  My username on GitHub is plainview.  Get in touch through GitHub if you have anything to say about Jester.
