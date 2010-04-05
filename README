@@ -2,16 +2,88 @@
 // Jester //
 ////////////
 
-Aims:
+Intro
 -----
-I'm learning a bit about touch events in HTML and JavaScript on the iPhone.  Seems to me that Apple's touch event and gesture objects go some way to providing an API for touch-based interfaces in JS but doesn't really provide enough tracking info (speed and acceleration being key to the native interfaces Apple themselves build).  They also don't provide easy gesture recognition (i.e. no onpinch or similar).  I'd like to bridge the gap between Apple's touch events and easy-to-use gesture recognition.
+A small JavaScript library for gesture recognition on DOM elements.
 
-Syntax should be as simple as something like:
+Project Status
+--------------
+Jester works for Swipes, Flicks, Taps and Double Taps.
 
-var watched = jester(element);  // watch an element for gestures
-watched.swipe(handler);  // attach a handler to the elements swipe event
-watched.unbind("swipe", handler);  // unbind the handler from the swipe event
+Examples of code can be seen at the bottom of this README in the "How to Use" section.
 
-A basic example can be viewed in the index.html page.  Boot it up on an iphone and swipe the black square.
+Project Aims
+------------
+- Super easy gesture recognition on DOM Elements.
+- Elegant syntax.  I like jQuery's style so will go with a bastardisation of that for now.
+- Library agnostic : must not rely on jQuery, Moo, Dojo etc.  Pure JavaScript only.
+- Open code base : The objects and interfaces used internally by Jester should be reasonably accessible without editing the core code.
+- No selector engine : how you fetch DOM elements is none of Jester's business.
+- No other bumf : this is all about gesture recognition and nothing else.
+
+A basic example can be viewed in the index.html page.  Boot it up on an iPhone, iPad or Simulator and swipe, flick, tap and doubletap on the black square.
 
 This is very much a learning project.  Mistakes will be made and enjoyed whole-heartedly.
+
+Project Todos
+-------------
+- Pinch recognition.
+- Non-Apple device support.
+
+How to Use
+----------
+
+Basic Syntax
+------------
+
+jester(element)
+  .swipe(swipeHandler)  // attach a handler to the element's swipe event
+  .doubletap(dtHandler);  // attach a handler to the element's doubletap event
+
+Handlers
+--------
+
+var handler = function(touchGroup, direction) {
+  // handler code
+}
+
+Handlers are passed a TouchGroup object which contains information about the gesture including touch position(s), changes in position, speed and acceleration.  For swipe and flick events, a direction is also passed as a string (i.e. "left" or "right").
+
+// Log the direction in which a gesture occured
+var whichDirection = function(touches, direction) {
+    console.log("Swiped to the " + direction);
+};
+
+// Log how far one of the touches in a gesture travelled
+var howFar = function(touches, direction) {
+    var distanceTravelled = touches.touch(0).total.x();
+    console.log(distanceTravelled);
+};
+
+// Attach the new handlers to some events
+jester(document.getElementById("wrapper"))
+  .flick(whichDirection)
+  .swipe(howFar);
+
+Options
+-------
+
+You can also pass Jester options which affect the way gestures are recognised:
+
+jester(document.getElementById("wrapper"), { swipeDistance: 400, flickTime: 200 })
+  .swipe(handler1)
+  .flick(handler2);
+
+Currently supported Options are:
+
+bubble         Boolean   Whether or not to bubble touch events performed on the element.
+
+tapDistance    Integer   Maximum distance a finger is allowed to travel for a tap to be registered.
+tapTime        Integer   Maximum time a finger is allowed to have contact with the screen for a tap to be registered.
+
+doubleTapTime  Integer   The maximum time between two taps to register as a double tap.
+
+swipeDistance  Integer   The minimum distance a gesture must travel before a swipe is registered.
+
+flickTime      Integer   The maximum length of time in milliseconds a gesture can last for it to be registered as a flick.
+flickDistance  Integer   The minimum distance a gesture must travel for it to be registered as a flick.

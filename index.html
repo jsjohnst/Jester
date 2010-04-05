@@ -6,39 +6,20 @@
 
     <title></title>
 
-    <link rel="stylesheet" href="_css/style.css" />
-
     <style type="text/css">
-      #target {
-        position: relative;
-        width: 300px;
-        height: 300px;
-        background-color: #000;
-      }
+      #wrapper { position: relative; width: 400px; height: 400px; background: #000; }
     </style>
 
-    <script src="_js/jester.js"></script>
-    <script src="_js/_events/eventset.js"></script>
-    <script src="_js/_events/eventsmodel.js"></script>
-    <script src="_js/_touch/touch.js"></script>
-    <script src="_js/_touch/touchgroup.js"></script>
-    <script src="_js/_touch/touchmonitor.js"></script>
+    <script type="text/javascript" src="jester.js">
+    </script>
 
-    <script>
+    <script type="text/javascript">
       document.addEventListener("DOMContentLoaded", function() {
-
-        var handler = function(touches, direction) {
-          alert("Swipe in direction: " + direction);
-        };
-
-        var tj = jester(document.getElementById("target"));
-
-        tj.swipe(handler);
-
-        document.getElementById("clearjest").addEventListener("click", function() {
-          tj.unbind("swipe", handler);
-        }, false);
-
+        jester(document.getElementById("wrapper"))
+          .flick(function() { console.log("flick"); })
+          .swipe(function() { console.log("swipe"); })
+          .tap(function() { console.log("tap"); })
+          .doubletap(function() { console.log("doubletap"); });
       }, false);
     </script>
 
@@ -47,8 +28,7 @@
   <body>
 
     <div id="wrapper">
-      <div id="target"></div>
-      <a href="#" id="clearjest">Clear Jest Swipe</a>
+
     </div>
 
   </body>
