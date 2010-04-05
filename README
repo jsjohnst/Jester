@@ -85,5 +85,5 @@ doubleTapTime  Integer   The maximum time between two taps to register as a doub
 
 swipeDistance  Integer   The minimum distance a gesture must travel before a swipe is registered.
 
-flickTime      Integer   The maximum length of time in milliseconds a gesture can last for it to be registered as a flick.
+flickTime      Integer   The maximum length of time a gesture can last for it to be registered as a flick.
 flickDistance  Integer   The minimum distance a gesture must travel for it to be registered as a flick.
