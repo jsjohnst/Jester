@@ -310,7 +310,7 @@
 
     },
 
-    TouchGroup : function() {
+    TouchGroup : function(event) {
 
 
       var that = this;
@@ -323,7 +323,7 @@
       var scale = event.scale;
       var prevScale = scale;
       var deltaScale = scale;
-    
+
       for(var i = 0; i < numTouches; i++) {
         this["touch" + i] = new Jester.Touch(event.touches[i].pageX, event.touches[i].pageY);
         midpointX = event.touches[i].pageX;
