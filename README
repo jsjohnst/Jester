@@ -15,7 +15,7 @@
 
 0.0 Intro
 ---------
-A small JavaScript library for easily recognising gestures on DOM elements on the iPhone and iPad.  Increased device support is a major todo.
+A small JavaScript library for easily recognising gestures on DOM elements on the iPhone and iPad.
 
 
 1.0 Project Status
@@ -42,7 +42,6 @@ This is very much a learning project.  Mistakes will be made and enjoyed whole-h
 1.2 Project Todos
 -----------------
 - Pinch recognition.
-- Non-Apple device support.
 - Clear and thorough documentation.
 - Project website.
 
