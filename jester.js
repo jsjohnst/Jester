@@ -11,7 +11,7 @@
       var that = this,
           cacheId = Jester.cacheId,
           cache = Jester.cache,
-          gestures = "swipe flick tap doubletap";
+          gestures = "swipe flick tap doubletap pinchnarrow pinchwiden pinchend";
 
       if(!element || !element.nodeType) {
         throw new TypeError("Jester: no element given.");
@@ -77,6 +77,25 @@
           return this;
         };
       }, that);
+
+      // wrapper to cover all three pinch methods
+      this.pinch = function(fns) {
+        if(typeof fns !== "undefined") {
+          // if its just a function it gets assigned to pinch end
+          if(fns.constructor && fns.constructor === Function) {
+            this.pinchend = fns;
+          }
+          else if(typeof fns === "object") {
+            var method;
+            "narrow widen end".split(" ").forEach(function(eventExt) {
+              method = "pinch" + eventExt;
+              if(fns[eventExt] && fns[eventExt].constructor && fns[eventExt].constructor === Function) {
+                that[method](fns[eventExt]);
+              }
+            });
+          }
+        }
+      }
 
       this.halt = function() {
         touches.stopListening();
@@ -248,6 +267,20 @@
       var touchMove = function(evt) {
         evt.preventDefault();
         touches.update(evt);
+
+        if(touches.numTouches() == 2) {
+
+          // pinchnarrow
+          if(touches.delta.scale() < 0.0) {
+            eventSet.execute("pinchnarrow", touches);
+          }
+
+          // pinchwiden
+          else if(touches.delta.scale() > 0.0) {
+            eventSet.execute("pinchwiden", touches);
+          }
+        }
+
       };
 
       var touchEnd = function(evt) {
@@ -288,10 +321,17 @@
           }
 
         }
-        else if(touches.numTouches == 2) {
-        
-        }
+        else if(touches.numTouches() == 2) {
 
+          // pinchend
+          if(touches.current.scale() !== 1.0) {
+            var pinchDirection = touches.current.scale() < 1.0 ? "narrowed" : "widened";
+            setTimeout(function() {
+              eventSet.execute("pinchend", touches, pinchDirection);
+            }, 0);
+          }
+
+        }
       };
 
       var stopListening = function() {
