@@ -19,7 +19,18 @@
           .flick(function() { console.log("flick"); })
           .swipe(function() { console.log("swipe"); })
           .tap(function() { console.log("tap"); })
-          .doubletap(function() { console.log("doubletap"); });
+          .doubletap(function() { console.log("doubletap"); })
+          .pinch({
+            narrow: function() {
+              console.log("pinch narrowed");
+            },
+            widen: function() {
+              console.log("pinch widened");
+            },
+            end: function(touches, direction) {
+              console.log("Pinch end: " + direction);
+            }
+          });
       }, false);
     </script>
 

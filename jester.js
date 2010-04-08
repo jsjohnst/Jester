@@ -83,7 +83,7 @@
         if(typeof fns !== "undefined") {
           // if its just a function it gets assigned to pinch end
           if(fns.constructor && fns.constructor === Function) {
-            this.pinchend = fns;
+            that.pinchend(fns);
           }
           else if(typeof fns === "object") {
             var method;
